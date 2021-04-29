@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWikinimous</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Wikinimous" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300|Roboto+Slab">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <%= render 'navbar' %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 mt-3">
+          <%= render "flash" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
   </body>
 </html>
